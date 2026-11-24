@@ -1,0 +1,2 @@
+-- Legacy no-op migration retained for history.
+-- HabTastic uses only Supabase Auth native TOTP factors for second-factor authentication.

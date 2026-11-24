@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Accent colour applied to the monochrome notification small icon.
+      Must stay in sync with `android.notification.color` in
+      supabase/functions/_shared/nativePush.ts (HabTastic Ocean Blue).
+    -->
+    <color name="habtastic_notification">#3B82F6</color>
+</resources>

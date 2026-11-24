@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Security headers (defense in depth; primary protections are server-side) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.paystack.co https://*.lovable.app https://*.lovable.dev https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://open.er-api.com https://*.supabase.co wss://*.supabase.co https://api.paystack.co https://api.elevenlabs.io https://*.lovable.app https://*.lovable.dev https://storage.googleapis.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com; frame-src https://js.paystack.co https://checkout.paystack.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com https://*.googleadservices.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+    <script>
+      // habtastic-frame-deny-v1
+      // Edge-level CSP frame-ancestors / X-Frame-Options are preferred, but
+      // Lovable Cloud may not forward repository-defined response headers.
+      // Therefore the page also fails CLOSED when embedded by an untrusted
+      // cross-origin ancestor. Trusted Lovable preview/editor origins remain
+      // allowed so development previews keep working.
+      (function () {
+        if (window.top === window.self) return;
+
+        var allowed = /^https?:\/\/([a-z0-9-]+\.)*(lovable\.app|lovable\.dev|lovableproject\.com|habtastic\.com)$|^https?:\/\/localhost(:\d+)?$/;
+
+        function denyFrame() {
+          // Hide before an embedding page can place deceptive controls over us.
+          document.documentElement.style.display = 'none';
+          try { window.top.location = window.self.location.href; } catch (e) { /* sandboxed frame: remain hidden */ }
+        }
+
+        try {
+          var origins = window.location.ancestorOrigins;
+          if (origins && origins.length) {
+            for (var i = 0; i < origins.length; i++) {
+              if (!allowed.test(origins[i])) {
+                denyFrame();
+                return;
+              }
+            }
+            return;
+          }
+
+          // Browsers without ancestorOrigins: allow only a provably same-origin
+          // parent. Reading top.location.origin throws for cross-origin frames.
+          if (window.top.location.origin === window.location.origin) return;
+        } catch (e) {
+          denyFrame();
+          return;
+        }
+
+        // Unknown framed state is denied rather than silently failing open.
+        denyFrame();
+      })();
+    </script>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), camera=(), microphone=(self), payment=(self), usb=(), magnetometer=(), gyroscope=()" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chewy&display=swap">
+    </noscript>
+    <!-- Favicons (cache-busted) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=4">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png?v=4">
+    <link rel="shortcut icon" href="/favicon.png?v=4">
+
+    <!-- Apple touch icons -->
+    <link rel="apple-touch-icon" href="/icons/icon-180.png?v=4">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png?v=4">
+    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-167.png?v=4">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png?v=4">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json?v=4">
+    <meta name="theme-color" content="#7B5CFF">
+
+    <!-- iOS Web App / Splash Screens -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="HabTastic AI">
+    <link rel="apple-touch-startup-image" href="/splash/splash-640x1136.png"   media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-750x1334.png"   media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-828x1792.png"   media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1125x2436.png"  media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1170x2532.png"  media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1179x2556.png"  media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1242x2688.png"  media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1284x2778.png"  media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1290x2796.png"  media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1536x2048.png"  media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1620x2160.png"  media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-1668x2388.png"  media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/splash/splash-2048x2732.png"  media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)">
+
+    <meta name="google-site-verification" content="oU31OTnjuJs_pq6hOTXKTC8SDwnke_8cvwqVV0fzVcs" />
+    <meta name="google-site-verification" content="Nn9wEWtGYkmjpuRpL3JVJebP_-X4FwnQRhRUjYLz9f4" />
+    <meta name="google-adsense-account" content="ca-pub-1971238777773206" />
+
+    <title>HabTastic AI – AI Habit Tracker &amp; Daily Goal Management Platform</title>
+    <meta name="description" content="HabTastic AI is an AI-powered habit tracking and daily goal management platform that helps users build healthy routines, track progress, maintain streaks, achieve daily goals, earn rewards, and receive personalized guidance from an AI habit coach.">
+    <meta name="author" content="HabTastic AI" />
+    <meta property="og:site_name" content="HabTastic AI" />
+
+    
+    
+    <meta property="og:type" content="website" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "HabTastic AI",
+        "url": "https://habtastic.com/",
+        "logo": "https://habtastic.com/app-icon-512.png",
+        "description": "AI-powered habit tracking and daily goal management platform with personalised AI coaching.",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "technical support",
+            "email": "support@habtastic.com",
+            "url": "https://habtastic.com/contact"
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "billing support",
+            "email": "info@habtastic.com",
+            "url": "https://habtastic.com/contact"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "HabTastic AI",
+        "url": "https://habtastic.com/",
+        "inLanguage": "en",
+        "publisher": { "@type": "Organization", "name": "HabTastic AI" }
+      }
+    </script>
+
+    <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/7vWQjl7quWYXLdTVkU451gdg28w1/social-images/social-1783455788076-1000205107.webp">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/7vWQjl7quWYXLdTVkU451gdg28w1/social-images/social-1783455788076-1000205107.webp">
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="HabTastic AI – AI Habit Tracker &amp; Productivity Coach">
+  <meta name="twitter:title" content="HabTastic AI – AI Habit Tracker &amp; Productivity Coach">
+  <meta property="og:description" content="HabTastic AI is an AI-powered habit tracker and productivity platform that helps users build healthy habits, achieve goals, receive personalized coaching, track progress, and stay motivated.">
+  <meta name="twitter:description" content="HabTastic AI is an AI-powered habit tracker and productivity platform that helps users build healthy habits, achieve goals, receive personalized coaching, track progress, and stay motivated.">
+</head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

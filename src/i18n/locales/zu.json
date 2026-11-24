@@ -1,0 +1,123 @@
+{
+  "common": {
+    "save": "Gcina",
+    "cancel": "Khansela",
+    "delete": "Susa",
+    "edit": "Hlela",
+    "close": "Vala",
+    "back": "Emuva",
+    "continue": "Qhubeka",
+    "loading": "Iyalayisha...",
+    "today": "Namuhla",
+    "yesterday": "Izolo",
+    "settings": "Izilungiselelo",
+    "premium": "I-Premium",
+    "language": "Ulimi"
+  },
+  "nav": {
+    "home": "Ikhaya",
+    "habits": "Imikhuba",
+    "progress": "Inqubekela",
+    "winston": "UWinston",
+    "premium": "I-Premium"
+  },
+  "home": {
+    "title": "Asinqobeni Namuhla...",
+    "greetingMorning": "Sawubona ekuseni",
+    "greetingAfternoon": "Qhubeka ngokushaya",
+    "greetingEvening": "Sawubona kusihlwa",
+    "hero": "Iqhawe",
+    "streakChain": "⛓️ Iketanga Yokulandelana",
+    "todaysProgress": "Inqubekela Yanamuhla",
+    "coachAllDone": "Yonke imikhuba iqediwe! Awunqandeki namuhla! 🎉",
+    "coachInProgress": "Ukuqala okumangalisayo! Kusele {{left}}. Qhubeka! 💪",
+    "coachStart": "Yonke iqhawe iqala ngesinyathelo esisodwa. Asinqobeni namuhla! 🚀",
+    "noHabits": "Qala umkhuba wakho wokuqala"
+  },
+  "habits": {
+    "title": "Imikhuba Yami",
+    "addHabit": "Engeza Umkhuba",
+    "noHabits": "Ayikho imikhuba okwamanje. Engeza eyokuqala!",
+    "completed": "Kuqediwe",
+    "streak": "Ukulandelana"
+  },
+  "progress": {
+    "title": "Inqubekela",
+    "weeklyReport": "Umbiko Wesonto",
+    "growthScore": "Iskolo Sokukhula"
+  },
+  "settings": {
+    "title": "Izilungiselelo",
+    "account": "I-akhawunti",
+    "notifications": "Izaziso",
+    "appearance": "Ukubukeka",
+    "habitsAi": "Imikhuba ne-AI",
+    "privacy": "Ubumfihlo",
+    "data": "Idatha",
+    "language": "Ulimi",
+    "languageDesc": "Khetha ulimi lohlelo",
+    "about": "Mayelana",
+    "logout": "Phuma",
+    "theme": "Itimu"
+  },
+  "language": {
+    "selectTitle": "Khetha ulimi lwakho",
+    "selectDesc": "Umbhalo uzobuyekezwa ngokushesha"
+  },
+  "auth": {
+    "signIn": "Ngena",
+    "signUp": "Bhalisa",
+    "email": "I-imeyili",
+    "password": "Iphasiwedi",
+    "forgotPassword": "Ukhohlwe iphasiwedi?",
+    "createAccount": "Yenza i-akhawunti"
+  },
+  "habit": {
+    "create": "Dala Umkhuba",
+    "name": "Igama Lomkhuba",
+    "custom": "Ngokwezifiso",
+    "save": "Londoloza",
+    "category": "Isigaba",
+    "frequency": "Ukuvama",
+    "delete": "Susa Umkhuba"
+  },
+  "notifications": {
+    "title": "Izaziso",
+    "enable": "Vumela izaziso",
+    "blocked": "Izaziso zivinjiwe",
+    "test": "Thumela isaziso sokuhlola"
+  },
+  "winston": {
+    "motivate": "Kwenze manje.",
+    "good": "Kuhle. Qhubeka.",
+    "warning": "Ungaphuli uchungechunge.",
+    "return": "Ubuyile futhi. Asihambe."
+  },
+  "frequency": {
+    "daily": "Nsuku zonke",
+    "weekly": "Masonto onke",
+    "custom": "Ngokwezifiso"
+  },
+  "days": {
+    "mon": "Mso",
+    "tue": "Lwe",
+    "wed": "Tha",
+    "thu": "Sin",
+    "fri": "Hla",
+    "sat": "Mgq",
+    "sun": "Son"
+  },
+  "referral": {
+    "title": "Mema Abangani",
+    "code": "Ikhodi Yakho",
+    "reward": "Thola izinsuku ezi-7 ze-Premium"
+  },
+  "theme": {
+    "light": "Okukhanyayo",
+    "dark": "Okumnyama"
+  },
+  "error": {
+    "required": "Le nkambu iyadingeka",
+    "invalid": "Okufakiwe akulungile"
+  }
+}

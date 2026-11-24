@@ -1,0 +1,123 @@
+{
+  "common": {
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "close": "बंद करें",
+    "back": "वापस",
+    "continue": "जारी रखें",
+    "loading": "लोड हो रहा है...",
+    "today": "आज",
+    "yesterday": "कल",
+    "settings": "सेटिंग्स",
+    "premium": "प्रीमियम",
+    "language": "भाषा"
+  },
+  "nav": {
+    "home": "होम",
+    "habits": "आदतें",
+    "progress": "प्रगति",
+    "winston": "विंस्टन",
+    "premium": "प्रीमियम"
+  },
+  "home": {
+    "title": "आज जीतते हैं...",
+    "greetingMorning": "सुप्रभात",
+    "greetingAfternoon": "ऐसे ही बढ़ते रहो",
+    "greetingEvening": "शुभ संध्या",
+    "hero": "हीरो",
+    "streakChain": "⛓️ स्ट्रीक चेन",
+    "todaysProgress": "आज की प्रगति",
+    "coachAllDone": "सभी आदतें पूरी! आज आपको कोई नहीं रोक सकता! 🎉",
+    "coachInProgress": "शानदार शुरुआत! {{left}} बची हैं। चलते रहो! 💪",
+    "coachStart": "हर चैंपियन एक कदम से शुरू करता है। आज जीतते हैं! 🚀",
+    "noHabits": "अपनी पहली आदत शुरू करें"
+  },
+  "habits": {
+    "title": "मेरी आदतें",
+    "addHabit": "आदत जोड़ें",
+    "noHabits": "अभी कोई आदत नहीं। पहली जोड़ें!",
+    "completed": "पूरा हुआ",
+    "streak": "स्ट्रीक"
+  },
+  "progress": {
+    "title": "प्रगति",
+    "weeklyReport": "साप्ताहिक रिपोर्ट",
+    "growthScore": "वृद्धि स्कोर"
+  },
+  "settings": {
+    "title": "सेटिंग्स",
+    "account": "खाता",
+    "notifications": "सूचनाएं",
+    "appearance": "रूप",
+    "habitsAi": "आदतें और एआई",
+    "privacy": "गोपनीयता",
+    "data": "डेटा",
+    "language": "भाषा",
+    "languageDesc": "ऐप की भाषा चुनें",
+    "about": "जानकारी",
+    "logout": "लॉग आउट",
+    "theme": "थीम"
+  },
+  "language": {
+    "selectTitle": "अपनी भाषा चुनें",
+    "selectDesc": "टेक्स्ट तुरंत अपडेट होगा"
+  },
+  "auth": {
+    "signIn": "साइन इन",
+    "signUp": "साइन अप",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "createAccount": "खाता बनाएं"
+  },
+  "habit": {
+    "create": "आदत बनाएं",
+    "name": "आदत का नाम",
+    "custom": "कस्टम",
+    "save": "सहेजें",
+    "category": "श्रेणी",
+    "frequency": "आवृत्ति",
+    "delete": "आदत हटाएं"
+  },
+  "notifications": {
+    "title": "सूचनाएं",
+    "enable": "सूचनाएं सक्षम करें",
+    "blocked": "सूचनाएं अवरुद्ध हैं",
+    "test": "परीक्षण सूचना भेजें"
+  },
+  "winston": {
+    "motivate": "अभी करो।",
+    "good": "अच्छा। बढ़ते रहो।",
+    "warning": "स्ट्रीक मत तोड़ो।",
+    "return": "फिर से वापस। चलो शुरू करें।"
+  },
+  "frequency": {
+    "daily": "दैनिक",
+    "weekly": "साप्ताहिक",
+    "custom": "कस्टम"
+  },
+  "days": {
+    "mon": "सोम",
+    "tue": "मंगल",
+    "wed": "बुध",
+    "thu": "गुरु",
+    "fri": "शुक्र",
+    "sat": "शनि",
+    "sun": "रवि"
+  },
+  "referral": {
+    "title": "दोस्तों को आमंत्रित करें",
+    "code": "आपका कोड",
+    "reward": "7 दिन प्रीमियम पाएं"
+  },
+  "theme": {
+    "light": "लाइट",
+    "dark": "डार्क"
+  },
+  "error": {
+    "required": "यह फ़ील्ड आवश्यक है",
+    "invalid": "अमान्य इनपुट"
+  }
+}

@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace = "app.lovable.habtastic"
+    compileSdk = rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "app.lovable.habtastic"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        // CI supplies the GitHub Actions run number after Capacitor sync.
+        // Local builds retain safe, user-friendly fallbacks.
+        versionCode Integer.parseInt(System.getenv("ANDROID_VERSION_CODE") ?: "200791")
+        versionName System.getenv("ANDROID_VERSION_NAME") ?: "1.0.9"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    // Release signing is driven by environment variables (CI) or a local
+    // keystore.properties file. Nothing secret is committed: when no keystore
+    // is available the release build simply falls back to unsigned/debug-less
+    // output, and CI fails fast before uploading (see android-build.yml).
+    signingConfigs {
+        release {
+            def storeFilePath = System.getenv("ANDROID_KEYSTORE_PATH")
+            def storePass = System.getenv("ANDROID_KEYSTORE_PASSWORD")
+            def alias = System.getenv("ANDROID_KEY_ALIAS")
+            def keyPass = System.getenv("ANDROID_KEY_PASSWORD")
+
+            def propsFile = rootProject.file("keystore.properties")
+            if (!storeFilePath && propsFile.exists()) {
+                def props = new Properties()
+                propsFile.withInputStream { props.load(it) }
+                storeFilePath = props['storeFile']
+                storePass = props['storePassword']
+                alias = props['keyAlias']
+                keyPass = props['keyPassword']
+            }
+
+            if (storeFilePath && file(storeFilePath).exists()) {
+                storeFile file(storeFilePath)
+                storePassword storePass
+                keyAlias alias
+                keyPassword keyPass
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            // Keep R8 disabled for the Capacitor app; no obfuscation mapping file is generated.
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // Include native debug symbols in the release App Bundle so Play can symbolicate native crashes.
+            ndk {
+                debugSymbolLevel 'SYMBOL_TABLE'
+            }
+            if (signingConfigs.release.storeFile != null) {
+                signingConfig signingConfigs.release
+            } else {
+                logger.warn("No release keystore configured — release output will be UNSIGNED.")
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+        apply plugin: 'com.google.firebase.crashlytics'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

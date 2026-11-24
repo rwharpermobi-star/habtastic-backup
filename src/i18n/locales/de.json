@@ -1,0 +1,123 @@
+{
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "back": "Zurück",
+    "continue": "Weiter",
+    "loading": "Lädt...",
+    "today": "Heute",
+    "yesterday": "Gestern",
+    "settings": "Einstellungen",
+    "premium": "Premium",
+    "language": "Sprache"
+  },
+  "nav": {
+    "home": "Start",
+    "habits": "Gewohnheiten",
+    "progress": "Fortschritt",
+    "winston": "Winston",
+    "premium": "Premium"
+  },
+  "home": {
+    "title": "Gewinnen wir heute...",
+    "greetingMorning": "Guten Morgen",
+    "greetingAfternoon": "Weiter so",
+    "greetingEvening": "Guten Abend",
+    "hero": "Held",
+    "streakChain": "⛓️ Serien-Kette",
+    "todaysProgress": "Heutiger Fortschritt",
+    "coachAllDone": "Alle Gewohnheiten geschafft! Heute unaufhaltbar! 🎉",
+    "coachInProgress": "Toller Start! Noch {{left}}. Weiter so! 💪",
+    "coachStart": "Jeder Champion beginnt mit einem Schritt. Gewinnen wir heute! 🚀",
+    "noHabits": "Starte deine erste Gewohnheit"
+  },
+  "habits": {
+    "title": "Meine Gewohnheiten",
+    "addHabit": "Gewohnheit hinzufügen",
+    "noHabits": "Noch keine Gewohnheiten. Füge die erste hinzu!",
+    "completed": "Erledigt",
+    "streak": "Serie"
+  },
+  "progress": {
+    "title": "Fortschritt",
+    "weeklyReport": "Wochenbericht",
+    "growthScore": "Wachstumswert"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "account": "Konto",
+    "notifications": "Benachrichtigungen",
+    "appearance": "Erscheinungsbild",
+    "habitsAi": "Gewohnheiten & KI",
+    "privacy": "Datenschutz",
+    "data": "Daten",
+    "language": "Sprache",
+    "languageDesc": "App-Sprache wählen",
+    "about": "Über",
+    "logout": "Abmelden",
+    "theme": "Design"
+  },
+  "language": {
+    "selectTitle": "Wähle deine Sprache",
+    "selectDesc": "Texte werden sofort aktualisiert"
+  },
+  "auth": {
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "forgotPassword": "Passwort vergessen?",
+    "createAccount": "Konto erstellen"
+  },
+  "habit": {
+    "create": "Gewohnheit erstellen",
+    "name": "Name der Gewohnheit",
+    "custom": "Benutzerdefiniert",
+    "save": "Speichern",
+    "category": "Kategorie",
+    "frequency": "Häufigkeit",
+    "delete": "Gewohnheit löschen"
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "enable": "Benachrichtigungen aktivieren",
+    "blocked": "Benachrichtigungen sind blockiert",
+    "test": "Testbenachrichtigung senden"
+  },
+  "winston": {
+    "motivate": "Tu es jetzt.",
+    "good": "Gut. Weiter so.",
+    "warning": "Brich die Serie nicht.",
+    "return": "Wieder da. Los geht's."
+  },
+  "frequency": {
+    "daily": "Täglich",
+    "weekly": "Wöchentlich",
+    "custom": "Benutzerdefiniert"
+  },
+  "days": {
+    "mon": "Mo",
+    "tue": "Di",
+    "wed": "Mi",
+    "thu": "Do",
+    "fri": "Fr",
+    "sat": "Sa",
+    "sun": "So"
+  },
+  "referral": {
+    "title": "Freunde einladen",
+    "code": "Dein Code",
+    "reward": "Verdiene 7 Tage Premium"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
+  "error": {
+    "required": "Pflichtfeld",
+    "invalid": "Ungültige Eingabe"
+  }
+}

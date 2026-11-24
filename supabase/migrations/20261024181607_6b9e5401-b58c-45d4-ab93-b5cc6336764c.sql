@@ -1,0 +1,1 @@
+CREATE POLICY avatar_generation_server_only ON public.avatar_generation_requests FOR ALL TO service_role USING (true) WITH CHECK (true);

@@ -1,0 +1,134 @@
+# HabTastic Android release build for Codemagic.
+# Manual-only: no automatic push builds are configured.
+workflows:
+  habtastic-android-release:
+    name: HabTastic Android Release (APK + AAB)
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+
+    environment:
+      android_signing:
+        - habtastic-upload-key-v2
+      node: 22.11.0
+      java: 21
+      groups:
+        - habtastic_android
+      vars:
+        APP_ID: app.lovable.habtastic
+        APP_NAME: HabTastic AI
+        VITE_ADMOB_LIVE: "true"
+        VITE_ADMOB_APP_ID: "ca-app-pub-1971238777773206~4099124115"
+        VITE_ADMOB_INTERSTITIAL_ID: "ca-app-pub-1971238777773206/4450477901"
+        VITE_ADMOB_REWARDED_ID: "ca-app-pub-1971238777773206/5222407599"
+
+    scripts:
+      - name: Verify build environment
+        script: |
+          set -euo pipefail
+          node --version
+          npm --version
+          java -version
+          test -n "${ANDROID_SDK_ROOT:-}" || test -n "${ANDROID_HOME:-}"
+
+      - name: Install dependencies
+        script: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+
+      - name: Verify Google Play readiness
+        script: |
+          set -euo pipefail
+          node scripts/verify-play-readiness.mjs
+
+      - name: Build web app
+        script: |
+          set -euo pipefail
+          npm run build
+          node scripts/verify-admob-production.mjs
+
+      - name: Prepare Firebase configuration
+        script: |
+          set -euo pipefail
+          if [ -z "${GOOGLE_SERVICES_JSON:-}" ]; then
+            echo "ERROR: GOOGLE_SERVICES_JSON is missing from the habtastic_android Codemagic variable group."
+            exit 1
+          fi
+          mkdir -p android/app
+          # Accept either raw JSON pasted into the secure variable or a base64-encoded file.
+          if printf '%s' "$GOOGLE_SERVICES_JSON" | grep -q '^[[:space:]]*{'; then
+            printf '%s' "$GOOGLE_SERVICES_JSON" > android/app/google-services.json
+          else
+            printf '%s' "$GOOGLE_SERVICES_JSON" | base64 -D > android/app/google-services.json
+          fi
+          node -e "const j=require('./android/app/google-services.json');const c=j.client.find(x=>x.client_info.android_client_info.package_name==='app.lovable.habtastic');if(!c){console.error('Firebase config has no app.lovable.habtastic client');process.exit(1)}console.log('Firebase Android client verified')"
+
+      - name: Prepare Capacitor Android project
+        script: |
+          set -euo pipefail
+          node scripts/ensure-google-services-plugin.mjs
+          npx cap sync android
+          # Verify the bundled production URL/key locally; do not call the live
+          # Supabase API here because the project is currently over its free egress quota.
+          node scripts/verify-supabase-production.mjs --assets android/app/src/main/assets/public
+          node scripts/verify-android-icons.mjs
+          node scripts/verify-push-config.mjs
+          grep -q '<string name="app_name">HabTastic AI</string>' android/app/src/main/res/values/strings.xml
+          grep -q 'applicationId "app.lovable.habtastic"' android/app/build.gradle
+          grep -q 'android:scheme="lovable"' android/app/src/main/AndroidManifest.xml
+          grep -q 'android:host="oauth-callback"' android/app/src/main/AndroidManifest.xml
+
+      - name: Configure Play-safe Android version
+        script: |
+          set -euo pipefail
+          export ANDROID_REQUESTED_VERSION_CODE="${BUILD_NUMBER:-1}"
+          export ANDROID_VERSION_CODE_OFFSET=200779
+          # Play release 1.0.9 (1.0.8 was 200790). versionCode still rises automatically with every
+          # Codemagic build (BUILD_NUMBER + offset), so it is always above 1.0.8.
+          export ANDROID_REQUESTED_VERSION_NAME="1.0.9"
+          node scripts/configure-android-version.mjs
+          cat android/version.json
+
+      - name: Build signed APK and AAB
+        script: |
+          set -euo pipefail
+          if [ -z "${CM_KEYSTORE_PATH:-}" ] || [ -z "${CM_KEYSTORE_PASSWORD:-}" ] || [ -z "${CM_KEY_ALIAS:-}" ] || [ -z "${CM_KEY_PASSWORD:-}" ]; then
+            echo "ERROR: Codemagic Android keystore signing identity is not available."
+            exit 1
+          fi
+          test -s "$CM_KEYSTORE_PATH"
+
+          # Map Codemagic's signing identity variables to the names expected by this project's Gradle config.
+          export ANDROID_KEYSTORE_PATH="$CM_KEYSTORE_PATH"
+          export ANDROID_KEYSTORE_PASSWORD="$CM_KEYSTORE_PASSWORD"
+          export ANDROID_KEY_ALIAS="$CM_KEY_ALIAS"
+          export ANDROID_KEY_PASSWORD="$CM_KEY_PASSWORD"
+
+          node scripts/verify-firebase-oauth-cert.mjs
+
+          chmod +x android/gradlew
+          cd android
+          ./gradlew :app:assembleRelease :app:bundleRelease --no-daemon --stacktrace
+
+      - name: Verify Android artifacts
+        script: |
+          set -euo pipefail
+          node scripts/verify-android-artifact-versions.mjs
+
+          APK="$(find android/app/build/outputs/apk/release -name '*.apk' | head -1)"
+          AAB="$(find android/app/build/outputs/bundle/release -name '*.aab' | head -1)"
+          test -n "$APK" && test -n "$AAB"
+
+          jarsigner -verify "$AAB" >/dev/null
+          SDK_ROOT="${ANDROID_SDK_ROOT:-${ANDROID_HOME:-}}"
+          APKSIGNER="$(find "$SDK_ROOT/build-tools" -name apksigner -type f | sort -V | tail -1)"
+          "$APKSIGNER" verify --verbose --print-certs "$APK"
+
+          shasum -a 256 "$APK" > "$APK.sha256"
+          shasum -a 256 "$AAB" > "$AAB.sha256"
+
+    artifacts:
+      - android/app/build/outputs/apk/release/*.apk
+      - android/app/build/outputs/bundle/release/*.aab
+      - android/app/build/outputs/apk/release/*.sha256
+      - android/app/build/outputs/bundle/release/*.sha256
+      - android/version.json

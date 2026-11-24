@@ -1,0 +1,1 @@
+UPDATE public.profiles SET onboarding_complete = true WHERE id = 'da8aff94-4eab-441e-9e8e-885344e51bac';

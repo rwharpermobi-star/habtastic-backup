@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "sdk_version": "3.4.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://votldorvfuktonwewuhm.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "habtastic-mcp",
+      "version": "0.1.0",
+      "title": "HabTastic"
+    },
+    "tools": [
+      {
+        "name": "list_habits",
+        "title": "List habits",
+        "description": "List all habits belonging to the signed-in HabTastic user, including emoji, category, frequency, difficulty, and the recorded completion dates.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "today_status",
+        "title": "Today's habit status",
+        "description": "Return today's habit list for the signed-in user, marking which have been completed and which are still pending.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "complete_habit",
+        "title": "Mark habit complete",
+        "description": "Mark a habit as completed for today. Provide the habit id from `list_habits` or `today_status`. Idempotent — completing an already-done habit is a no-op.",
+        "annotations": {
+          "readOnlyHint": false,
+          "idempotentHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "habit_id": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+              "description": "The habit id (uuid) from list_habits."
+            }
+          },
+          "required": [
+            "habit_id"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_stats",
+        "title": "Get habit stats",
+        "description": "Summarize the signed-in user's habit completion over the last N days (default 7). Returns per-habit completion rate and overall totals.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "days": {
+              "description": "Lookback window in days (1-90). Defaults to 7.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 90
+            }
+          },
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

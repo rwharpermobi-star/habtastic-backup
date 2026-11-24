@@ -1,0 +1,123 @@
+{
+  "common": {
+    "save": "Stoor",
+    "cancel": "Kanselleer",
+    "delete": "Verwyder",
+    "edit": "Wysig",
+    "close": "Sluit",
+    "back": "Terug",
+    "continue": "Gaan voort",
+    "loading": "Laai...",
+    "today": "Vandag",
+    "yesterday": "Gister",
+    "settings": "Instellings",
+    "premium": "Premium",
+    "language": "Taal"
+  },
+  "nav": {
+    "home": "Tuis",
+    "habits": "Gewoontes",
+    "progress": "Vordering",
+    "winston": "Winston",
+    "premium": "Premium"
+  },
+  "home": {
+    "title": "Kom ons wen vandag...",
+    "greetingMorning": "Goeie môre",
+    "greetingAfternoon": "Hou so aan",
+    "greetingEvening": "Goeie aand",
+    "hero": "Held",
+    "streakChain": "⛓️ Reeks Ketting",
+    "todaysProgress": "Vandag se Vordering",
+    "coachAllDone": "Al die gewoontes klaar! Jy is onkeerbaar vandag! 🎉",
+    "coachInProgress": "Wonderlike begin! Nog {{left}} oor. Hou aan! 💪",
+    "coachStart": "Elke kampioen begin met een tree. Kom ons wen vandag! 🚀",
+    "noHabits": "Begin jou eerste gewoonte"
+  },
+  "habits": {
+    "title": "My Gewoontes",
+    "addHabit": "Voeg Gewoonte By",
+    "noHabits": "Nog geen gewoontes nie. Voeg jou eerste by!",
+    "completed": "Voltooi",
+    "streak": "Reeks"
+  },
+  "progress": {
+    "title": "Vordering",
+    "weeklyReport": "Weeklikse Verslag",
+    "growthScore": "Groeitelling"
+  },
+  "settings": {
+    "title": "Instellings",
+    "account": "Rekening",
+    "notifications": "Kennisgewings",
+    "appearance": "Voorkoms",
+    "habitsAi": "Gewoontes & KI",
+    "privacy": "Privaatheid",
+    "data": "Data",
+    "language": "Taal",
+    "languageDesc": "Kies jou app-taal",
+    "about": "Oor",
+    "logout": "Teken uit",
+    "theme": "Tema"
+  },
+  "language": {
+    "selectTitle": "Kies jou taal",
+    "selectDesc": "Teks sal onmiddellik opdateer"
+  },
+  "auth": {
+    "signIn": "Teken In",
+    "signUp": "Registreer",
+    "email": "E-pos",
+    "password": "Wagwoord",
+    "forgotPassword": "Wagwoord vergeet?",
+    "createAccount": "Skep rekening"
+  },
+  "habit": {
+    "create": "Skep Gewoonte",
+    "name": "Gewoonte Naam",
+    "custom": "Pasgemaak",
+    "save": "Stoor",
+    "category": "Kategorie",
+    "frequency": "Frekwensie",
+    "delete": "Verwyder Gewoonte"
+  },
+  "notifications": {
+    "title": "Kennisgewings",
+    "enable": "Aktiveer kennisgewings",
+    "blocked": "Kennisgewings is geblokkeer",
+    "test": "Stuur toetskennisgewing"
+  },
+  "winston": {
+    "motivate": "Doen dit nou.",
+    "good": "Goed. Hou aan.",
+    "warning": "Moenie die reeks breek nie.",
+    "return": "Jy is terug. Kom ons beweeg."
+  },
+  "frequency": {
+    "daily": "Daagliks",
+    "weekly": "Weekliks",
+    "custom": "Pasgemaak"
+  },
+  "days": {
+    "mon": "Ma",
+    "tue": "Di",
+    "wed": "Wo",
+    "thu": "Do",
+    "fri": "Vr",
+    "sat": "Sa",
+    "sun": "So"
+  },
+  "referral": {
+    "title": "Nooi Vriende",
+    "code": "Jou Kode",
+    "reward": "Verdien 7 dae Premium"
+  },
+  "theme": {
+    "light": "Lig",
+    "dark": "Donker"
+  },
+  "error": {
+    "required": "Hierdie veld is verpligtend",
+    "invalid": "Ongeldige invoer"
+  }
+}

@@ -1,0 +1,17 @@
+# Security response headers.
+#
+# `frame-ancestors` and `X-Frame-Options` are ONLY honoured as real HTTP
+# response headers — a <meta http-equiv> tag is ignored by every browser, which
+# is why the clickjacking protection lives here. This file is consumed at deploy
+# time by Netlify / Cloudflare Pages style hosts; `vercel.json` carries the same
+# rules for Vercel. Verify a deployment with:
+#
+#   node scripts/verify-security-headers.mjs https://habtastic.com
+/*
+  Content-Security-Policy: frame-ancestors 'self' https://habtastic.com https://www.habtastic.com https://*.lovable.app https://*.lovable.dev https://*.lovableproject.com
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Permissions-Policy: geolocation=(), camera=(), microphone=(self), payment=(self), usb=(), magnetometer=(), gyroscope=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups

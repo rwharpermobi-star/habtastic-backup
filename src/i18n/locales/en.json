@@ -1,0 +1,123 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "continue": "Continue",
+    "loading": "Loading...",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "settings": "Settings",
+    "premium": "Premium",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "habits": "Habits",
+    "progress": "Progress",
+    "winston": "Winston",
+    "premium": "Premium"
+  },
+  "home": {
+    "title": "Let's Win Today...",
+    "greetingMorning": "Rise & shine",
+    "greetingAfternoon": "Keep crushing it",
+    "greetingEvening": "Evening vibes",
+    "hero": "Hero",
+    "streakChain": "⛓️ Streak Chain",
+    "todaysProgress": "Today's Progress",
+    "coachAllDone": "All habits crushed! You're unstoppable today! 🎉",
+    "coachInProgress": "Epic start! {{left}} left to crush. Keep going! 💪",
+    "coachStart": "Every champion starts with one step. Let's win today! 🚀",
+    "noHabits": "Start your first habit"
+  },
+  "habits": {
+    "title": "My Habits",
+    "addHabit": "Add Habit",
+    "noHabits": "No habits yet. Add your first one!",
+    "completed": "Completed",
+    "streak": "Streak"
+  },
+  "progress": {
+    "title": "Progress",
+    "weeklyReport": "Weekly Report",
+    "growthScore": "Growth Score"
+  },
+  "settings": {
+    "title": "Settings",
+    "account": "Account",
+    "notifications": "Notifications",
+    "appearance": "Appearance",
+    "habitsAi": "Habits & AI",
+    "privacy": "Privacy & Security",
+    "data": "Data",
+    "language": "Language",
+    "languageDesc": "Choose your app language",
+    "about": "About",
+    "logout": "Log out",
+    "theme": "Theme"
+  },
+  "language": {
+    "selectTitle": "Choose your language",
+    "selectDesc": "App text will update instantly"
+  },
+  "habit": {
+    "create": "Create Habit",
+    "name": "Habit Name",
+    "custom": "Custom",
+    "save": "Save",
+    "category": "Category",
+    "frequency": "Frequency",
+    "delete": "Delete Habit"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "enable": "Enable notifications",
+    "blocked": "Notifications are blocked",
+    "test": "Send test notification"
+  },
+  "winston": {
+    "motivate": "Do it now.",
+    "good": "Good. Keep going.",
+    "warning": "Don't break the streak.",
+    "return": "Back again. Let's move."
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "createAccount": "Create account"
+  },
+  "frequency": {
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "custom": "Custom"
+  },
+  "days": {
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat",
+    "sun": "Sun"
+  },
+  "referral": {
+    "title": "Invite Friends",
+    "code": "Your Code",
+    "reward": "Earn 7 days Premium"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "error": {
+    "required": "This field is required",
+    "invalid": "Invalid input"
+  }
+}

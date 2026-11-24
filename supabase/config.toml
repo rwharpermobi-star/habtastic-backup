@@ -1,0 +1,158 @@
+project_id = "votldorvfuktonwewuhm"
+
+# Public/provider callbacks and internal jobs authenticate themselves in-code.
+[functions.paystack-webhook]
+verify_jwt = false
+
+# Google Pub/Sub supplies its own Google-signed OIDC JWT; the function validates
+# issuer, audience and email before re-verifying the purchase with Google Play.
+[functions.google-play-rtdn]
+verify_jwt = false
+
+[functions.auth-email-hook]
+verify_jwt = false
+
+[functions.vapid-public-key]
+verify_jwt = false
+
+[functions.notification-dispatcher]
+verify_jwt = true
+
+# pg_cron authenticates here with a 256-bit Vault secret; this gateway then
+# calls notification-dispatcher with the service-role JWT.
+[functions.notification-cron-gateway]
+verify_jwt = false
+
+[functions.telemetry-ingest]
+verify_jwt = true
+
+[functions.handle-email-unsubscribe]
+verify_jwt = false
+
+[functions.handle-email-suppression]
+verify_jwt = false
+
+[functions.retention-jobs]
+verify_jwt = false
+
+[functions.referral-retention-payout]
+verify_jwt = false
+
+[functions.telemetry-alerts]
+verify_jwt = false
+
+[functions.paystack-webhook-sweep]
+verify_jwt = false
+
+[functions.paystack-webhook-monitor]
+verify_jwt = false
+
+[functions.paystack-process-event]
+verify_jwt = false
+
+[functions.paystack-config]
+verify_jwt = false
+
+[functions.security-verify]
+verify_jwt = false
+
+# Public k-anonymity proxy for HIBP Pwned Passwords. The client sends only a 5-char SHA-1 prefix.
+[functions.pwned-password-range]
+verify_jwt = false
+
+[functions.mcp]
+verify_jwt = false
+
+[functions.admob-reward]
+verify_jwt = false
+
+# Called by Google AdMob (no user session); every request must carry a valid Google ECDSA signature.
+[functions.admob-ssv]
+verify_jwt = false
+
+# Authenticated/user-facing functions require a valid Supabase JWT at the
+# platform boundary in addition to their existing in-function authorization.
+[functions.ai-coach]
+verify_jwt = true
+
+[functions.banking-save]
+verify_jwt = true
+
+[functions.data-migration]
+verify_jwt = true
+
+[functions.delete-account]
+verify_jwt = true
+
+[functions.elevenlabs-tts]
+verify_jwt = true
+
+[functions.generate-avatar]
+verify_jwt = true
+
+[functions.generate-bg-music]
+verify_jwt = true
+
+[functions.journal-analyze]
+verify_jwt = true
+
+[functions.paystack-cancel]
+verify_jwt = true
+
+[functions.paystack-health]
+verify_jwt = true
+
+[functions.paystack-init]
+verify_jwt = true
+
+[functions.paystack-retry]
+verify_jwt = true
+
+[functions.paystack-shop-init]
+verify_jwt = true
+
+[functions.paystack-shop-verify]
+verify_jwt = true
+
+
+[functions.paystack-sync-subscription]
+verify_jwt = true
+
+[functions.paystack-verify]
+verify_jwt = true
+
+[functions.preview-transactional-email]
+verify_jwt = true
+
+[functions.process-email-queue]
+verify_jwt = true
+
+[functions.push-subscribe]
+verify_jwt = true
+
+[functions.push-token-register]
+verify_jwt = true
+
+[functions.send-test-push]
+verify_jwt = true
+
+[functions.send-transactional-email]
+verify_jwt = true
+
+[functions.translate-batch]
+verify_jwt = true
+
+[functions.google-play-verify]
+verify_jwt = false
+
+[functions.weekly-ai-review]
+verify_jwt = true
+
+[functions.winston-challenge]
+verify_jwt = true
+
+[functions.winston-coach-daily]
+verify_jwt = true
+
+[functions.winston-money-saver]
+verify_jwt = true

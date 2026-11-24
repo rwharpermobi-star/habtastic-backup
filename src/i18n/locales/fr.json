@@ -1,0 +1,123 @@
+{
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "back": "Retour",
+    "continue": "Continuer",
+    "loading": "Chargement...",
+    "today": "Aujourd'hui",
+    "yesterday": "Hier",
+    "settings": "Paramètres",
+    "premium": "Premium",
+    "language": "Langue"
+  },
+  "nav": {
+    "home": "Accueil",
+    "habits": "Habitudes",
+    "progress": "Progrès",
+    "winston": "Winston",
+    "premium": "Premium"
+  },
+  "home": {
+    "title": "Gagnons aujourd'hui...",
+    "greetingMorning": "Bonjour",
+    "greetingAfternoon": "Continue comme ça",
+    "greetingEvening": "Bonsoir",
+    "hero": "Héros",
+    "streakChain": "⛓️ Chaîne de Série",
+    "todaysProgress": "Progrès du Jour",
+    "coachAllDone": "Toutes les habitudes terminées ! Tu es inarrêtable ! 🎉",
+    "coachInProgress": "Super départ ! Il en reste {{left}}. Continue ! 💪",
+    "coachStart": "Chaque champion commence par un pas. Gagnons aujourd'hui ! 🚀",
+    "noHabits": "Commence ta première habitude"
+  },
+  "habits": {
+    "title": "Mes Habitudes",
+    "addHabit": "Ajouter une Habitude",
+    "noHabits": "Aucune habitude. Ajoutez la première !",
+    "completed": "Terminée",
+    "streak": "Série"
+  },
+  "progress": {
+    "title": "Progrès",
+    "weeklyReport": "Rapport Hebdomadaire",
+    "growthScore": "Score de Croissance"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "account": "Compte",
+    "notifications": "Notifications",
+    "appearance": "Apparence",
+    "habitsAi": "Habitudes et IA",
+    "privacy": "Confidentialité",
+    "data": "Données",
+    "language": "Langue",
+    "languageDesc": "Choisissez la langue de l'app",
+    "about": "À propos",
+    "logout": "Déconnexion",
+    "theme": "Thème"
+  },
+  "language": {
+    "selectTitle": "Choisissez votre langue",
+    "selectDesc": "Le texte se mettra à jour instantanément"
+  },
+  "auth": {
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "createAccount": "Créer un compte"
+  },
+  "habit": {
+    "create": "Créer une Habitude",
+    "name": "Nom de l'Habitude",
+    "custom": "Personnalisé",
+    "save": "Enregistrer",
+    "category": "Catégorie",
+    "frequency": "Fréquence",
+    "delete": "Supprimer l'Habitude"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "enable": "Activer les notifications",
+    "blocked": "Les notifications sont bloquées",
+    "test": "Envoyer une notification test"
+  },
+  "winston": {
+    "motivate": "Fais-le maintenant.",
+    "good": "Bien. Continue.",
+    "warning": "Ne casse pas la série.",
+    "return": "De retour. On bouge."
+  },
+  "frequency": {
+    "daily": "Quotidien",
+    "weekly": "Hebdomadaire",
+    "custom": "Personnalisé"
+  },
+  "days": {
+    "mon": "Lun",
+    "tue": "Mar",
+    "wed": "Mer",
+    "thu": "Jeu",
+    "fri": "Ven",
+    "sat": "Sam",
+    "sun": "Dim"
+  },
+  "referral": {
+    "title": "Inviter des Amis",
+    "code": "Ton Code",
+    "reward": "Gagne 7 jours Premium"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+  "error": {
+    "required": "Ce champ est requis",
+    "invalid": "Saisie invalide"
+  }
+}

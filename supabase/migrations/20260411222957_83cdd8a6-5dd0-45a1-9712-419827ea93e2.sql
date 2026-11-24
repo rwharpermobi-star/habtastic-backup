@@ -1,0 +1,2 @@
+ALTER TABLE public.chat_messages DROP CONSTRAINT chat_messages_coach_id_check;
+ALTER TABLE public.chat_messages ADD CONSTRAINT chat_messages_coach_id_check CHECK (coach_id = ANY (ARRAY['maya'::text, 'ethan'::text, 'winston'::text]));

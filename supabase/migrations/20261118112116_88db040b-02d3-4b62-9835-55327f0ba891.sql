@@ -1,0 +1,1 @@
+GRANT EXECUTE ON FUNCTION public.rate_limit_check(text, integer, integer) TO authenticated;

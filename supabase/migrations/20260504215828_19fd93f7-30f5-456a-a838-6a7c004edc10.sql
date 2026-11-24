@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS lifestyle_data jsonb NOT NULL DEFAULT '{}'::jsonb;

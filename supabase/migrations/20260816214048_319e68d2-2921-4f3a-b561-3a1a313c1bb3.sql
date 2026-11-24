@@ -1,0 +1,11 @@
+CREATE INDEX IF NOT EXISTS idx_habits_user_created ON public.habits (user_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_challenges_user_id ON public.challenges (user_id);
+CREATE INDEX IF NOT EXISTS idx_community_feed_comments_feed_id ON public.community_feed_comments (feed_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_journal_entries_folder_id ON public.journal_entries (folder_id);
+CREATE INDEX IF NOT EXISTS idx_partner_checkins_partnership_id ON public.partner_checkins (partnership_id, created_at);
+CREATE INDEX IF NOT EXISTS idx_shop_orders_product_id ON public.shop_orders (product_id);
+CREATE INDEX IF NOT EXISTS idx_user_cosmetics_item_id ON public.user_cosmetics (item_id);
+CREATE INDEX IF NOT EXISTS idx_referrals_referrer_id ON public.referrals (referrer_id);
+CREATE INDEX IF NOT EXISTS idx_rate_limits_ip_lookup ON public.rate_limits_ip (ip_address, endpoint, window_start);
+ANALYZE public.habits;
+ANALYZE public.referrals;

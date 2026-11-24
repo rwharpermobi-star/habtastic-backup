@@ -1,0 +1,1 @@
+Performance pass note: the warm-start and shared habit query should use an explicit projection rather than select('*').

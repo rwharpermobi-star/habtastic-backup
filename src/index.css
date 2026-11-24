@@ -1,0 +1,970 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+/* Chewy is preloaded from index.html for faster paint; import kept as a resilient fallback */
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root, .light {
+    /* === Calm Teal & Slate Light Theme === */
+    /* Soft white base #F8FAFC */
+    --background: 210 40% 98%;
+    --foreground: 215 25% 20%;
+
+    /* Card: pure white */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 20%;
+
+    /* Primary: deep teal #0F766E */
+    --primary: 175 77% 26%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: cool slate-tinted surface #F1F5F9 */
+    --secondary: 210 30% 94%;
+    --secondary-foreground: 215 25% 20%;
+
+    --muted: 210 25% 94%;
+    --muted-foreground: 215 16% 42%;
+
+    /* Accent: deeper coral #E11D48 — AA on white text + AA as text on bg */
+    --accent: 350 82% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive: deeper red #DC2626 — AA as text on light surfaces */
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border: strong enough to meet WCAG 1.4.11 non-text contrast */
+    --border: 215 16% 76%;
+    --input: 215 16% 60%;
+    --ring: 175 77% 26%;
+
+    --radius: 1.25rem;
+
+    --warning: 32 95% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --success: 160 70% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 25% 20%;
+    --sidebar-primary: 175 77% 26%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 94%;
+    --sidebar-accent-foreground: 215 25% 20%;
+    --sidebar-border: 215 20% 88%;
+    --sidebar-ring: 175 77% 26%;
+  }
+
+  .dark {
+    /* === HabTastic Premium Playful Dark === */
+    /* Deep navy base #14213D */
+    --background: 218 51% 16%;
+    --foreground: 0 0% 100%;
+
+    /* Card: glass-style elevated navy */
+    --card: 217 45% 22%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 217 45% 22%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary: vibrant teal #00D4C7 */
+    --primary: 176 100% 42%;
+    --primary-foreground: 218 51% 12%;
+
+    /* Secondary: playful purple #7C4DFF */
+    --secondary: 255 100% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217 35% 26%;
+    --muted-foreground: 214 24% 78%;
+
+    /* Accent: coral #FF7A59 */
+    --accent: 13 100% 67%;
+    --accent-foreground: 218 51% 12%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 30% 36%;
+    --input: 217 30% 42%;
+    --ring: 176 100% 42%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 218 51% 12%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --sidebar-background: 218 55% 13%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 176 100% 42%;
+    --sidebar-primary-foreground: 218 51% 12%;
+    --sidebar-accent: 217 45% 22%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 217 35% 28%;
+    --sidebar-ring: 176 100% 42%;
+  }
+}
+
+@layer base {
+  /* Subtle teal halo at top — calm, professional signature */
+  body {
+    background-color: hsl(var(--background));
+    background-image: radial-gradient(ellipse at top, hsl(175 77% 26% / 0.05), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-color: #14213D;
+    background-image:
+      /* Top→bottom layered navy gradient */
+      linear-gradient(180deg, #14213D 0%, #1B365D 55%, #223A70 100%),
+      /* Subtle teal + purple radial glows for depth */
+      radial-gradient(ellipse 60% 40% at 15% 12%, hsl(176 100% 42% / 0.18), transparent 70%),
+      radial-gradient(ellipse 55% 45% at 85% 80%, hsl(255 100% 65% / 0.16), transparent 70%),
+      radial-gradient(ellipse 70% 50% at 50% 100%, hsl(176 100% 42% / 0.10), transparent 70%);
+    background-blend-mode: normal, screen, screen, screen;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  /* === Premium "Glow" Theme Variant === */
+  /* Animated teal→cyan mesh gradient + amplified glows. Toggled via .glow on <html>. */
+  .glow body {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(circle at 20% 10%, hsl(174 86% 38% / 0.22), transparent 45%),
+      radial-gradient(circle at 80% 90%, hsl(175 95% 43% / 0.18), transparent 50%),
+      radial-gradient(circle at 60% 40%, hsl(172 76% 50% / 0.12), transparent 55%);
+    background-size: 200% 200%, 220% 220%, 180% 180%;
+    background-attachment: fixed;
+    animation: glow-drift 18s ease-in-out infinite alternate;
+  }
+
+  .glow.dark body {
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(circle at 20% 10%, hsl(172 76% 50% / 0.28), transparent 45%),
+      radial-gradient(circle at 80% 90%, hsl(175 80% 52% / 0.22), transparent 50%),
+      radial-gradient(circle at 60% 40%, hsl(174 86% 38% / 0.18), transparent 55%);
+    background-size: 200% 200%, 220% 220%, 180% 180%;
+    background-attachment: fixed;
+    animation: glow-drift 18s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow-drift {
+    0%   { background-position: 0% 0%, 100% 100%, 50% 50%; }
+    50%  { background-position: 50% 30%, 60% 70%, 30% 60%; }
+    100% { background-position: 100% 100%, 0% 0%, 70% 40%; }
+  }
+
+  /* Amplify card auras when Glow is on */
+  .glow .glass {
+    box-shadow:
+      0 0 24px hsl(174 86% 38% / 0.18),
+      0 4px 20px hsl(175 95% 43% / 0.10);
+  }
+  .glow.dark .glass {
+    box-shadow:
+      0 0 32px hsl(172 76% 50% / 0.22),
+      0 4px 24px hsl(175 80% 52% / 0.14);
+  }
+  .glow .gradient-primary,
+  .glow .btn-premium {
+    box-shadow:
+      0 4px 20px hsl(174 86% 38% / 0.45),
+      0 0 50px hsl(175 95% 43% / 0.25);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.35s ease, color 0.35s ease;
+  }
+
+  /* === Unified type scale ===========================================
+     Headings default to Fredoka (playful display).
+     Body inherits Inter from <body>.
+     Sizes/weights match the tailwind token scale so utilities stay in sync. */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka', 'Inter', system-ui, sans-serif;
+    color: hsl(var(--foreground));
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  h1 { font-size: 1.75rem;  line-height: 1.2;  font-weight: 700; }
+  h2 { font-size: 1.375rem; line-height: 1.25; font-weight: 600; }
+  h3 { font-size: 1.125rem; line-height: 1.3;  font-weight: 600; }
+  h4 { font-size: 1rem;     line-height: 1.35; font-weight: 600; }
+  h5 { font-size: 0.9375rem; line-height: 1.4; font-weight: 600; }
+  h6 { font-size: 0.8125rem; line-height: 1.4; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+
+  p     { line-height: 1.55; text-wrap: pretty; }
+  small { font-size: 0.75rem; line-height: 1.4; color: hsl(var(--muted-foreground)); }
+
+  /* Numbers everywhere use tabular figures so counters don't jitter */
+  .stat-num, .num-tabular, [data-num] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "cv11" 1;
+  }
+
+  *, *::before, *::after {
+    transition: background-color 0.35s ease, color 0.25s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+}
+
+
+
+@layer utilities {
+  /* Playful display font class */
+  .font-display {
+    font-family: 'Fredoka', 'Inter', system-ui, sans-serif;
+  }
+
+  /* Fun, bubbly display font used for the user's name on the Home hero */
+  .font-signature {
+    font-family: 'Chewy', 'Fredoka', 'Comic Sans MS', system-ui, cursive;
+    letter-spacing: 0.5px;
+    /* Chewy sits tall; tighten line-box so it never overlaps siblings */
+    line-height: 1.05;
+    font-display: swap;
+  }
+
+  /* Glow helpers for the top-of-home clock + date.
+     Uses currentColor-based shadows so contrast stays readable in both
+     light and dark mode without washing out the glyph itself. */
+  .text-glow-primary {
+    color: hsl(var(--primary));
+    text-shadow:
+      0 1px 0 hsl(var(--background) / 0.6),
+      0 0 6px hsl(var(--primary) / 0.45),
+      0 0 14px hsl(var(--primary) / 0.28);
+  }
+  .dark .text-glow-primary {
+    color: hsl(var(--primary));
+    text-shadow:
+      0 0 8px hsl(var(--primary) / 0.75),
+      0 0 20px hsl(var(--primary) / 0.4);
+  }
+  .text-glow-accent {
+    color: hsl(var(--accent));
+    text-shadow:
+      0 1px 0 hsl(var(--background) / 0.6),
+      0 0 6px hsl(var(--accent) / 0.45),
+      0 0 14px hsl(var(--accent) / 0.28);
+  }
+  .dark .text-glow-accent {
+    color: hsl(var(--accent));
+    text-shadow:
+      0 0 8px hsl(var(--accent) / 0.75),
+      0 0 20px hsl(var(--accent) / 0.4);
+  }
+
+
+  /* Hide scrollbars while keeping scroll functional (used in horizontal chip rows) */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass {
+    @apply bg-card/85 backdrop-blur-xl border border-white/[0.10] shadow-sm;
+    border-radius: 24px;
+  }
+
+  .dark .glass {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border-radius: 24px;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.28),
+      0 0 24px hsl(176 100% 42% / 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  /* Primary gradient: vibrant teal → playful purple */
+  .gradient-primary {
+    background: linear-gradient(135deg, #00D4C7 0%, #7C4DFF 100%);
+  }
+
+  /* Accent gradient: coral → orange (streak/alert use) */
+  .gradient-accent {
+    background: linear-gradient(135deg, #FF7A59 0%, #F59E0B 100%);
+  }
+
+  .gradient-orange {
+    background: linear-gradient(135deg, #FF7A59, #F59E0B);
+  }
+
+  .gradient-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+  }
+
+  /* Premium hero gradient: teal → purple */
+  .gradient-hero {
+    background: linear-gradient(135deg, #00D4C7 0%, #7C4DFF 60%, #14213D 100%);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 24px hsl(176 100% 42% / 0.40), 0 0 60px hsl(176 100% 42% / 0.18);
+  }
+
+  .dark .glow-primary {
+    box-shadow: 0 0 28px hsl(176 100% 42% / 0.45), 0 0 70px hsl(176 100% 42% / 0.20);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 24px hsl(13 100% 67% / 0.40), 0 0 60px hsl(13 100% 67% / 0.18);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 24px rgba(255, 122, 89, 0.45), 0 0 60px rgba(245, 158, 11, 0.18);
+  }
+
+  .glow-neon {
+    box-shadow: 0 0 24px hsl(255 100% 65% / 0.40), 0 0 60px hsl(255 100% 65% / 0.18);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px hsl(176 100% 42% / 0.55);
+  }
+
+  .shadow-card {
+    box-shadow: 0px 4px 16px hsl(218 51% 6% / 0.10), 0px 8px 32px hsl(218 51% 6% / 0.06);
+  }
+
+  .dark .shadow-card {
+    box-shadow: 0 0 20px hsl(176 100% 42% / 0.08), 0 8px 28px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Premium button style */
+  .btn-premium {
+    @apply gradient-primary text-primary-foreground font-semibold rounded-btn px-6 py-3.5;
+    box-shadow: 0 4px 16px hsl(174 86% 38% / 0.35), 0 0 40px hsl(175 95% 43% / 0.15);
+    transition: all 0.2s ease;
+  }
+
+  .btn-premium:active {
+    transform: scale(0.97);
+  }
+
+  /* Signature text gradient: vibrant teal → playful purple */
+  .text-gradient {
+    background: linear-gradient(135deg, #00D4C7 0%, #7C4DFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Progress bar — glowing teal→purple indicator in dark mode */
+  .dark [data-radix-progress-indicator],
+  .dark [role="progressbar"] > * {
+    background: linear-gradient(90deg, #00D4C7 0%, #7C4DFF 100%) !important;
+    box-shadow: 0 0 12px hsl(176 100% 42% / 0.55), 0 0 24px hsl(255 100% 65% / 0.30);
+  }
+
+  /* Achievement / streak micro-gradient surface */
+  .gradient-achievement {
+    background: linear-gradient(135deg, rgba(0,212,199,0.18) 0%, rgba(124,77,255,0.18) 100%);
+    border: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .gradient-streak {
+    background: linear-gradient(135deg, rgba(255,122,89,0.22) 0%, rgba(245,158,11,0.22) 100%);
+    border: 1px solid rgba(255,255,255,0.14);
+  }
+
+  /* Premium gold text gradient — used for subscriber names */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #8B6914 0%, #D4AF37 50%, #B8860B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 1px 2px rgba(184, 134, 11, 0.3));
+  }
+
+  /* ================================================================
+     Unified typography utilities
+     Use these instead of ad-hoc text-* combinations so every screen
+     shares the same rhythm.
+     ================================================================ */
+  .text-display {
+    font-family: 'Fredoka', 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .text-eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+  .text-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: hsl(var(--muted-foreground));
+  }
+  .text-meta {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Prominent numeric displays — XP, streaks, coins, levels */
+  .stat-num {
+    font-family: 'Fredoka', 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat-num-xl { @apply stat-num; font-size: 2.25rem; }
+  .stat-num-lg { @apply stat-num; font-size: 1.75rem; }
+  .stat-num-md { @apply stat-num; font-size: 1.25rem; }
+  .stat-num-sm { @apply stat-num; font-size: 1rem; }
+
+  /* Signature stat gradient — pair with .stat-num for hero counters */
+  .stat-num-gradient {
+    background: linear-gradient(135deg, #00D4C7 0%, #7C4DFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ================================================================
+     Icon system — consistent size, stroke, alignment
+     Wrap lucide icons with these classes for a unified feel.
+     ================================================================ */
+  .icon { width: 1.25rem; height: 1.25rem; stroke-width: 2; flex-shrink: 0; }
+  .icon-xs { width: 0.875rem; height: 0.875rem; stroke-width: 2.25; flex-shrink: 0; }
+  .icon-sm { width: 1rem;    height: 1rem;    stroke-width: 2; flex-shrink: 0; }
+  .icon-md { width: 1.25rem; height: 1.25rem; stroke-width: 2; flex-shrink: 0; }
+  .icon-lg { width: 1.5rem;  height: 1.5rem;  stroke-width: 2; flex-shrink: 0; }
+  .icon-xl { width: 2rem;    height: 2rem;    stroke-width: 1.75; flex-shrink: 0; }
+
+  /* Circular tinted icon tile — use behind feature icons for a premium chip look */
+  .icon-tile {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 2.5rem; height: 2.5rem; border-radius: 0.875rem;
+    background: linear-gradient(135deg, hsl(176 100% 42% / 0.18), hsl(255 100% 65% / 0.18));
+    border: 1px solid hsl(255 100% 65% / 0.20);
+    color: hsl(var(--primary));
+  }
+  .icon-tile-sm { width: 2rem;   height: 2rem;   border-radius: 0.75rem; }
+  .icon-tile-lg { width: 3rem;   height: 3rem;   border-radius: 1rem; }
+  .icon-tile-accent {
+    background: linear-gradient(135deg, hsl(13 100% 67% / 0.20), hsl(38 92% 50% / 0.20));
+    border-color: hsl(13 100% 67% / 0.22);
+    color: hsl(var(--accent));
+  }
+  .icon-tile-warning {
+    background: linear-gradient(135deg, hsl(38 92% 50% / 0.20), hsl(13 100% 67% / 0.16));
+    border-color: hsl(38 92% 50% / 0.22);
+    color: hsl(var(--warning));
+  }
+  .icon-tile-success {
+    background: linear-gradient(135deg, hsl(160 70% 45% / 0.20), hsl(176 100% 42% / 0.18));
+    border-color: hsl(160 70% 45% / 0.22);
+    color: hsl(var(--success));
+  }
+
+  /* Ambient icon motion — subtle, respects reduced-motion */
+  .icon-anim-float   { animation: icon-float 3.6s ease-in-out infinite; }
+  .icon-anim-pulse   { animation: icon-soft-pulse 2.4s ease-in-out infinite; }
+  .icon-anim-spin-slow { animation: icon-spin-slow 8s linear infinite; }
+  .icon-anim-wiggle  { animation: icon-wiggle 4s ease-in-out infinite; transform-origin: 50% 90%; }
+
+  /* ================================================================
+     Chips, badges, pills — small UI standardization
+     ================================================================ */
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    height: 1.75rem; padding: 0 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.01em;
+    background: hsl(var(--secondary) / 0.6);
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+  .chip-primary {
+    background: linear-gradient(135deg, hsl(176 100% 42% / 0.18), hsl(255 100% 65% / 0.18));
+    border-color: hsl(176 100% 42% / 0.30);
+    color: hsl(var(--primary));
+  }
+  .chip-accent {
+    background: linear-gradient(135deg, hsl(13 100% 67% / 0.18), hsl(38 92% 50% / 0.18));
+    border-color: hsl(13 100% 67% / 0.30);
+    color: hsl(var(--accent));
+  }
+  .chip-success {
+    background: hsl(160 70% 45% / 0.15);
+    border-color: hsl(160 70% 45% / 0.30);
+    color: hsl(var(--success));
+  }
+  .chip-warning {
+    background: hsl(38 92% 50% / 0.15);
+    border-color: hsl(38 92% 50% / 0.32);
+    color: hsl(var(--warning));
+  }
+  .chip-danger {
+    background: hsl(0 84% 60% / 0.15);
+    border-color: hsl(0 84% 60% / 0.32);
+    color: hsl(var(--destructive));
+  }
+  .chip-premium {
+    background: linear-gradient(135deg, #8B6914 0%, #D4AF37 50%, #B8860B 100%);
+    border-color: rgba(212, 175, 55, 0.45);
+    color: #1a1a1a;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .chip .chip-icon { width: 0.875rem; height: 0.875rem; stroke-width: 2.25; }
+}
+
+
+/* === Micro-interaction animations === */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px hsl(176 100% 42% / 0.25); }
+  50%      { box-shadow: 0 0 28px hsl(176 100% 42% / 0.55), 0 0 48px hsl(255 100% 65% / 0.25); }
+}
+
+@keyframes success-burst {
+  0%   { box-shadow: 0 0 0 0 hsl(176 100% 42% / 0.55); }
+  50%  { box-shadow: 0 0 30px 14px hsl(176 100% 42% / 0.30); }
+  100% { box-shadow: 0 0 0 0 hsl(176 100% 42% / 0); }
+}
+
+@keyframes xp-pop {
+  0% { transform: scale(0.5) translateY(0); opacity: 0; }
+  40% { transform: scale(1.3) translateY(-8px); opacity: 1; }
+  100% { transform: scale(1) translateY(-16px); opacity: 0; }
+}
+
+@keyframes ripple-success {
+  0%   { transform: scale(0.6); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes level-flash {
+  0%   { background-color: transparent; }
+  15%  { background-color: hsl(176 100% 42% / 0.18); }
+  100% { background-color: transparent; }
+}
+
+/* === Streak counter: warm coral/amber pulse — rewarding fire vibe === */
+@keyframes streak-glow {
+  0%, 100% { box-shadow: 0 0 10px hsl(13 100% 67% / 0.30); }
+  50%      { box-shadow: 0 0 24px hsl(13 100% 67% / 0.55), 0 0 48px hsl(38 92% 50% / 0.25); }
+}
+
+@keyframes streak-pop {
+  0%   { transform: scale(1) rotate(0deg); }
+  35%  { transform: scale(1.18) rotate(-4deg); filter: drop-shadow(0 0 12px hsl(13 100% 67% / 0.7)); }
+  60%  { transform: scale(0.96) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes check-bounce {
+  0%   { transform: scale(0.3) rotate(-12deg); opacity: 0.5; }
+  35%  { transform: scale(1.45) rotate(5deg); opacity: 1; }
+  55%  { transform: scale(0.88) rotate(-2deg); }
+  75%  { transform: scale(1.12) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes check-glow {
+  0%   { box-shadow: 0 0 0 0 hsl(176 100% 42% / 0.70); }
+  40%  { box-shadow: 0 0 24px 12px hsl(176 100% 42% / 0.40); }
+  100% { box-shadow: 0 0 0 0 hsl(176 100% 42% / 0); }
+}
+
+@keyframes check-ring {
+  0%   { box-shadow: 0 0 0 0 hsl(176 100% 42% / 0.55); }
+  100% { box-shadow: 0 0 0 16px hsl(176 100% 42% / 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* === Achievement badge: shimmering teal→purple sweep + soft float === */
+@keyframes badge-shimmer {
+  0%   { background-position: -150% 0; }
+  100% { background-position: 250% 0; }
+}
+
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-3px) rotate(-1.5deg); }
+}
+
+@keyframes badge-unlock {
+  0%   { transform: scale(0.4) rotate(-20deg); opacity: 0; filter: brightness(1.8); }
+  45%  { transform: scale(1.25) rotate(8deg); opacity: 1; filter: brightness(1.4); }
+  70%  { transform: scale(0.95) rotate(-3deg); filter: brightness(1.1); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; filter: brightness(1); }
+}
+
+.animate-fade-in-up   { animation: fadeInUp 0.3s ease-out forwards; }
+.animate-pulse-glow   { animation: pulse-glow 2.5s ease-in-out infinite; }
+.animate-success-burst{ animation: success-burst 0.6s ease-out; }
+.animate-xp-pop       { animation: xp-pop 0.8s ease-out forwards; }
+.animate-ripple-success { animation: ripple-success 0.6s ease-out forwards; }
+.animate-level-flash  { animation: level-flash 1s ease-out; }
+.animate-streak-glow  { animation: streak-glow 2.2s ease-in-out infinite; }
+.animate-streak-pop   { animation: streak-pop 0.6s cubic-bezier(0.34, 1.65, 0.64, 1); }
+.animate-check-bounce { animation: check-bounce 0.5s cubic-bezier(0.34, 1.65, 0.64, 1), check-glow 0.7s ease-out, check-ring 0.6s ease-out; }
+.animate-badge-float  { animation: badge-float 3.4s ease-in-out infinite; }
+.animate-badge-unlock { animation: badge-unlock 0.9s cubic-bezier(0.34, 1.65, 0.64, 1) both; }
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Achievement badge shimmer overlay — apply on the badge surface */
+.badge-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.badge-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255,255,255,0.28) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: badge-shimmer 3.2s ease-in-out infinite;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Currency animations */
+@keyframes coin-spin {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes gem-sparkle {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.2); filter: brightness(1.3); }
+}
+
+@keyframes danger-pulse {
+  0%, 100% { box-shadow: 0 0 8px hsl(0 84% 60% / 0.25); }
+  50%      { box-shadow: 0 0 24px hsl(0 84% 60% / 0.55), 0 0 48px hsl(0 84% 60% / 0.22); }
+}
+
+.animate-coin-spin    { animation: coin-spin 2s ease-in-out infinite; display: inline-block; }
+.animate-gem-sparkle  { animation: gem-sparkle 2s ease-in-out infinite; display: inline-block; }
+.animate-danger-pulse { animation: danger-pulse 1.5s ease-in-out infinite; }
+
+@keyframes pulse-glow-accent {
+  0%, 100% { box-shadow: 0 0 8px -2px hsl(var(--accent) / 0.18); }
+  50%      { box-shadow: 0 0 24px -2px hsl(var(--accent) / 0.45); }
+}
+
+@keyframes pulse-glow-primary {
+  0%, 100% { box-shadow: 0 0 8px -2px hsl(var(--primary) / 0.18); }
+  50%      { box-shadow: 0 0 24px -2px hsl(var(--primary) / 0.45); }
+}
+
+/* ================================================================
+   Playful hover / press micro-interactions
+   - .interactive-card: lift + glow on hover, gentle press
+   - .interactive-press: tactile press for buttons / chips / tiles
+   - .interactive-tap: subtle scale only (no lift) for compact items
+   ================================================================ */
+
+.interactive-card {
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms ease,
+    border-color 260ms ease,
+    background-color 260ms ease;
+  will-change: transform;
+}
+@media (hover: hover) {
+  .interactive-card:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.28),
+      0 0 28px hsl(176 100% 42% / 0.18),
+      0 0 56px hsl(255 100% 65% / 0.10);
+    border-color: rgba(255, 255, 255, 0.20);
+  }
+}
+.interactive-card:active {
+  transform: translateY(0) scale(0.985);
+  transition-duration: 90ms;
+}
+
+.interactive-press {
+  transition:
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 200ms ease,
+    filter 200ms ease;
+  will-change: transform;
+}
+@media (hover: hover) {
+  .interactive-press:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.06) saturate(1.05);
+  }
+}
+.interactive-press:active {
+  transform: scale(0.95);
+  filter: brightness(0.95);
+  transition-duration: 80ms;
+}
+
+.interactive-tap {
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1), filter 200ms ease;
+}
+.interactive-tap:active {
+  transform: scale(0.92);
+  filter: brightness(0.95);
+}
+
+/* Auto-apply gentle press feedback to all native buttons + glass cards.
+   Components can opt out by adding the `no-press` class. */
+button:not(.no-press):not(:disabled):active {
+  transform: scale(0.97);
+  transition: transform 90ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .glass:not(.no-hover):hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.30),
+      0 0 28px hsl(176 100% 42% / 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  }
+}
+
+/* === Card accent variants — subtle differentiation without breaking theme ===
+   Apply alongside `.glass` to give important cards their own personality.
+   e.g. <div className="glass card-accent-primary"> */
+.card-accent-primary {
+  border-left: 3px solid hsl(var(--primary) / 0.55);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 0 22px hsl(var(--primary) / 0.10);
+}
+.card-accent-accent {
+  border-left: 3px solid hsl(var(--accent) / 0.6);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 0 22px hsl(var(--accent) / 0.12);
+}
+.card-accent-success {
+  border-left: 3px solid hsl(var(--success) / 0.6);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 0 22px hsl(var(--success) / 0.10);
+}
+.card-accent-warning {
+  border-left: 3px solid hsl(var(--warning) / 0.65);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 0 22px hsl(var(--warning) / 0.12);
+}
+.card-tinted-primary {
+  background: linear-gradient(140deg, hsl(var(--primary) / 0.06), hsl(var(--card) / 0.85));
+}
+.card-tinted-accent {
+  background: linear-gradient(140deg, hsl(var(--accent) / 0.06), hsl(var(--card) / 0.85));
+}
+.dark .card-tinted-primary {
+  background: linear-gradient(140deg, hsl(var(--primary) / 0.10), rgba(255,255,255,0.06));
+}
+.dark .card-tinted-accent {
+  background: linear-gradient(140deg, hsl(var(--accent) / 0.10), rgba(255,255,255,0.06));
+}
+
+/* Progress bar: subtle continuous shimmer on the filled portion (dark mode) */
+.dark [data-radix-progress-indicator],
+.dark [role="progressbar"] > * {
+  position: relative;
+  overflow: hidden;
+}
+.dark [data-radix-progress-indicator]::after,
+.dark [role="progressbar"] > *::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.30) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.6s linear infinite;
+  pointer-events: none;
+}
+
+/* === Unified button system ========================================== */
+@keyframes btn-ripple {
+  0%   { transform: scale(0);   opacity: 0.55; }
+  60%  { opacity: 0.35; }
+  100% { transform: scale(1);   opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [style*="btn-ripple"] { animation: none !important; }
+}
+
+/* === Icon system animations ========================================== */
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+@keyframes icon-soft-pulse {
+  0%, 100% { transform: scale(1);    filter: drop-shadow(0 0 0 hsl(var(--primary) / 0)); }
+  50%      { transform: scale(1.08); filter: drop-shadow(0 0 6px hsl(var(--primary) / 0.55)); }
+}
+@keyframes icon-spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes icon-wiggle {
+  0%, 92%, 100% { transform: rotate(0deg); }
+  94%           { transform: rotate(-8deg); }
+  96%           { transform: rotate(6deg); }
+  98%           { transform: rotate(-3deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .icon-anim-float,
+  .icon-anim-pulse,
+  .icon-anim-spin-slow,
+  .icon-anim-wiggle { animation: none !important; }
+}
+
+
+/* === Habits page polish ============================================== */
+@keyframes flame-breathe {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50%      { transform: scale(1.15) rotate(2deg); }
+}
+@keyframes flame-roar {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.45); }
+  50%      { box-shadow: 0 0 18px 2px rgba(249,115,22,0.55); }
+}
+@keyframes chip-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); filter: brightness(1.25); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+.animate-flame-breathe { animation: flame-breathe 2.4s ease-in-out infinite; transform-origin: 50% 90%; }
+.animate-flame-roar    { animation: flame-roar 1.8s ease-in-out infinite; }
+.animate-chip-pop      { animation: chip-pop 0.55s cubic-bezier(0.34, 1.65, 0.64, 1); display: inline-block; }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-flame-breathe,
+  .animate-flame-roar,
+  .animate-chip-pop { animation: none !important; }
+
+  .animate-pulse-glow,
+  .animate-success-burst,
+  .animate-xp-pop,
+  .animate-ripple-success,
+  .animate-level-flash,
+  .animate-streak-glow,
+  .animate-streak-pop,
+  .animate-check-bounce,
+  .animate-badge-float,
+  .animate-badge-unlock,
+  .animate-shimmer,
+  .animate-coin-spin,
+  .animate-gem-sparkle,
+  .animate-danger-pulse,
+  .badge-shimmer::after,
+  .dark [data-radix-progress-indicator]::after,
+  .dark [role="progressbar"] > *::after {
+    animation: none !important;
+  }
+  .interactive-card,
+  .interactive-press,
+  .interactive-tap {
+    transition: none !important;
+  }
+}
+
+/* --- Cold-start splash (CSS-only so framer-motion stays off the critical path) --- */
+@keyframes splash-logo-in {
+  0%   { transform: scale(0.5); opacity: 0; }
+  70%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes splash-title-in {
+  0%   { transform: translateY(12px) rotate(-3deg); opacity: 0; }
+  70%  { transform: translateY(-3px) rotate(1deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}
+@keyframes splash-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes splash-dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50%      { transform: scale(1.4); opacity: 1; }
+}
+.splash-logo {
+  animation: splash-logo-in 0.8s ease-out both;
+}
+.splash-title {
+  animation: splash-title-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
+}
+.splash-tagline {
+  animation: splash-fade-in 0.5s ease-out 0.7s both;
+}
+.splash-dot {
+  animation: splash-dot-pulse 0.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .splash-logo,
+  .splash-title,
+  .splash-tagline,
+  .splash-dot {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

@@ -1,0 +1,123 @@
+{
+  "common": {
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "continue": "متابعة",
+    "loading": "جار التحميل...",
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "settings": "الإعدادات",
+    "premium": "بريميوم",
+    "language": "اللغة"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "habits": "العادات",
+    "progress": "التقدم",
+    "winston": "وينستون",
+    "premium": "بريميوم"
+  },
+  "home": {
+    "title": "...لنفز اليوم",
+    "greetingMorning": "صباح الخير",
+    "greetingAfternoon": "واصل التألق",
+    "greetingEvening": "مساء الخير",
+    "hero": "بطل",
+    "streakChain": "⛓️ سلسلة المتتالية",
+    "todaysProgress": "تقدم اليوم",
+    "coachAllDone": "تم إنجاز كل العادات! لا يمكن إيقافك اليوم! 🎉",
+    "coachInProgress": "بداية رائعة! تبقى {{left}}. واصل! 💪",
+    "coachStart": "كل بطل يبدأ بخطوة. لنفز اليوم! 🚀",
+    "noHabits": "ابدأ عادتك الأولى"
+  },
+  "habits": {
+    "title": "عاداتي",
+    "addHabit": "إضافة عادة",
+    "noHabits": "لا توجد عادات بعد. أضف أول واحدة!",
+    "completed": "مكتمل",
+    "streak": "متتالية"
+  },
+  "progress": {
+    "title": "التقدم",
+    "weeklyReport": "التقرير الأسبوعي",
+    "growthScore": "درجة النمو"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "account": "الحساب",
+    "notifications": "الإشعارات",
+    "appearance": "المظهر",
+    "habitsAi": "العادات والذكاء الاصطناعي",
+    "privacy": "الخصوصية والأمان",
+    "data": "البيانات",
+    "language": "اللغة",
+    "languageDesc": "اختر لغة التطبيق",
+    "about": "حول",
+    "logout": "تسجيل الخروج",
+    "theme": "السمة"
+  },
+  "language": {
+    "selectTitle": "اختر لغتك",
+    "selectDesc": "سيتم تحديث النص فورًا"
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "createAccount": "إنشاء حساب"
+  },
+  "habit": {
+    "create": "إنشاء عادة",
+    "name": "اسم العادة",
+    "custom": "مخصص",
+    "save": "حفظ",
+    "category": "الفئة",
+    "frequency": "التكرار",
+    "delete": "حذف العادة"
+  },
+  "notifications": {
+    "title": "الإشعارات",
+    "enable": "تفعيل الإشعارات",
+    "blocked": "الإشعارات محظورة",
+    "test": "إرسال إشعار تجريبي"
+  },
+  "winston": {
+    "motivate": "افعلها الآن.",
+    "good": "جيد. واصل.",
+    "warning": "لا تكسر المتتالية.",
+    "return": "عدت مجددًا. لنتحرك."
+  },
+  "frequency": {
+    "daily": "يومي",
+    "weekly": "أسبوعي",
+    "custom": "مخصص"
+  },
+  "days": {
+    "mon": "إثن",
+    "tue": "ثلا",
+    "wed": "أرب",
+    "thu": "خمي",
+    "fri": "جمع",
+    "sat": "سبت",
+    "sun": "أحد"
+  },
+  "referral": {
+    "title": "ادعُ الأصدقاء",
+    "code": "رمزك",
+    "reward": "اربح 7 أيام بريميوم"
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن"
+  },
+  "error": {
+    "required": "هذا الحقل مطلوب",
+    "invalid": "إدخال غير صالح"
+  }
+}

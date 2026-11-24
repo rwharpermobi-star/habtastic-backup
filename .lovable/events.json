@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "events": {
+    "project.subscription_cancelled": {
+      "event_schema_version": 1,
+      "description": "A paying user successfully cancelled their Paystack Premium subscription inside the app (Premium continues until period end).",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provider",
+          "source"
+        ],
+        "properties": {
+          "provider": {
+            "type": "string",
+            "enum": [
+              "paystack"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "pricing",
+              "subscription_status"
+            ]
+          }
+        }
+      }
+    },
+    "project.subscription_checkout_cancelled": {
+      "event_schema_version": 1,
+      "description": "The user backed out of a Premium checkout before paying (closed the Google Play sheet or cancelled Paystack checkout).",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provider",
+          "plan"
+        ],
+        "properties": {
+          "provider": {
+            "type": "string",
+            "enum": [
+              "google_play",
+              "paystack"
+            ]
+          },
+          "plan": {
+            "type": "string",
+            "enum": [
+              "monthly",
+              "yearly",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "project.subscription_checkout_started": {
+      "event_schema_version": 1,
+      "description": "A signed-in user without an active paid plan started a Premium checkout (Google Play purchase sheet or Paystack web checkout).",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provider",
+          "plan"
+        ],
+        "properties": {
+          "provider": {
+            "type": "string",
+            "enum": [
+              "google_play",
+              "paystack"
+            ]
+          },
+          "plan": {
+            "type": "string",
+            "enum": [
+              "monthly",
+              "yearly"
+            ]
+          }
+        }
+      }
+    },
+    "project.subscription_purchased": {
+      "event_schema_version": 1,
+      "description": "A Premium purchase was verified by the server (Google Play verify or Paystack verify succeeded).",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provider",
+          "plan"
+        ],
+        "properties": {
+          "provider": {
+            "type": "string",
+            "enum": [
+              "google_play",
+              "paystack"
+            ]
+          },
+          "plan": {
+            "type": "string",
+            "enum": [
+              "monthly",
+              "yearly"
+            ]
+          }
+        }
+      }
+    },
+    "project.subscription_verification_failed": {
+      "event_schema_version": 1,
+      "description": "A Premium payment could not be verified by the server after checkout (after all automatic retries).",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provider",
+          "plan",
+          "reason"
+        ],
+        "properties": {
+          "provider": {
+            "type": "string",
+            "enum": [
+              "google_play",
+              "paystack"
+            ]
+          },
+          "plan": {
+            "type": "string",
+            "enum": [
+              "monthly",
+              "yearly"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "verification_error",
+              "missing_reference",
+              "payment_not_successful",
+              "verification_unavailable",
+              "network_error"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

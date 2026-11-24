@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Status-bar (small) notification icon for HabTastic AI.
+
+  Android renders small notification icons as an ALPHA MASK: every non-transparent
+  pixel is repainted with the notification accent colour. That is why this is a
+  single solid white path and NOT the full-colour launcher icon — using the
+  launcher mipmap here would show up as a plain white square on the status bar.
+
+  Design: the HabTastic check-mark inside a rounded ring (24dp, ~2dp padding to
+  respect the system's optical inset).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Outer ring -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M12,2.4c-5.3,0 -9.6,4.3 -9.6,9.6s4.3,9.6 9.6,9.6s9.6,-4.3 9.6,-9.6S17.3,2.4 12,2.4zM12,19.8c-4.3,0 -7.8,-3.5 -7.8,-7.8S7.7,4.2 12,4.2s7.8,3.5 7.8,7.8S16.3,19.8 12,19.8z" />
+
+    <!-- Check mark -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M10.6,15.2l-3,-3l1.3,-1.3l1.7,1.7l4.5,-4.5l1.3,1.3z" />
+</vector>

@@ -1,0 +1,67 @@
+[
+  {
+    "name": "entry (app shell)",
+    "path": "dist/assets/index-*.js",
+    "limit": "50 kB"
+  },
+  {
+    "name": "utils-vendor (clsx/tw-merge/cva)",
+    "path": "dist/assets/utils-vendor-*.js",
+    "limit": "9 kB"
+  },
+  {
+    "name": "react-vendor",
+    "path": "dist/assets/react-vendor-*.js",
+    "limit": "55 kB"
+  },
+  {
+    "name": "ui-vendor (Radix)",
+    "path": "dist/assets/ui-vendor-*.js",
+    "limit": "36 kB"
+  },
+  {
+    "name": "charts-vendor (Recharts, must stay lazy)",
+    "path": "dist/assets/charts-vendor-*.js",
+    "limit": "100 kB"
+  },
+  {
+    "name": "motion-vendor (framer-motion)",
+    "path": "dist/assets/motion-vendor-*.js",
+    "limit": "45 kB"
+  },
+  {
+    "name": "supabase-vendor",
+    "path": "dist/assets/supabase-vendor-*.js",
+    "limit": "50 kB"
+  },
+  {
+    "name": "query-vendor",
+    "path": "dist/assets/query-vendor-*.js",
+    "limit": "15 kB"
+  },
+  {
+    "name": "i18n-vendor",
+    "path": "dist/assets/i18n-vendor-*.js",
+    "limit": "20 kB"
+  },
+  {
+    "name": "Coach route chunk",
+    "path": "dist/assets/Coach-*.js",
+    "limit": "55 kB"
+  },
+  {
+    "name": "MonthlyReport route chunk",
+    "path": "dist/assets/MonthlyReport-*.js",
+    "limit": "10 kB"
+  },
+  {
+    "name": "initial JS (entry + react + ui)",
+    "path": [
+      "dist/assets/index-*.js",
+      "dist/assets/react-vendor-*.js",
+      "dist/assets/ui-vendor-*.js",
+      "dist/assets/utils-vendor-*.js"
+    ],
+    "limit": "140 kB"
+  }
+]
